@@ -9,9 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.ferdbgg.springteste.entidades.Usuario;
+import br.com.ferdbgg.springteste.entities.Usuario;
 import br.com.ferdbgg.springteste.services.UsuarioService;
-import jakarta.websocket.server.PathParam;
 
 @RestController
 @RequestMapping(value = "/usuarios")

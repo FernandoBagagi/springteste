@@ -6,8 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.ferdbgg.springteste.entidades.Usuario;
-import br.com.ferdbgg.springteste.repositorios.UsuarioRepository;
+import br.com.ferdbgg.springteste.entities.Usuario;
+import br.com.ferdbgg.springteste.repositories.UsuarioRepository;
 
 @Service
 public class UsuarioService {

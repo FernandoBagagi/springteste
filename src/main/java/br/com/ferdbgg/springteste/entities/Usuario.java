@@ -1,4 +1,4 @@
-package br.com.ferdbgg.springteste.entidades;
+package br.com.ferdbgg.springteste.entities;
 
 import java.io.Serializable;
 

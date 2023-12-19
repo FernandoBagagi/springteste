@@ -1,9 +1,9 @@
-package br.com.ferdbgg.springteste.repositorios;
+package br.com.ferdbgg.springteste.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import br.com.ferdbgg.springteste.entidades.Usuario;
+import br.com.ferdbgg.springteste.entities.Usuario;
 
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer>{
