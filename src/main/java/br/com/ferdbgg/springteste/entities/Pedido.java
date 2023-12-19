@@ -1,35 +1,34 @@
 package br.com.ferdbgg.springteste.entities;
 
 import java.io.Serializable;
-import java.util.List;
+import java.time.Instant;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name="usuarios")
+@Table(name="pedidos")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Usuario implements Serializable {
-
+public class Pedido implements Serializable {
+    
     private static final long serialVersionUID = 1L;
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String nome;
-    private String email;
-    private String telefone;
-    private String senha;
-    @OneToMany(mappedBy = "cliente")
-    private List<Pedido> pedidos;
+    private Instant instante;
+    @ManyToOne
+    @JoinColumn(name = "id_cliente")
+    private Usuario cliente;
 
 }
