@@ -1,4 +1,4 @@
-package br.com.ferdbgg.springteste.repositories;
+package br.com.ferdbgg.springteste.repositorios;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
