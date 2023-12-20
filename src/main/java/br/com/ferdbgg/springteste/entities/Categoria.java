@@ -1,6 +1,9 @@
 package br.com.ferdbgg.springteste.entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,5 +27,7 @@ public class Categoria implements Serializable {
     private Integer id;
 
     private String nome;
+
+    private Set<Produto> produtos = new HashSet<>();
 
 }
