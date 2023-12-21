@@ -43,14 +43,24 @@ public class ConfiguracoesDeTestes implements CommandLineRunner{
         this.categoriaRepository.saveAll(categoriasDumb);
 
         List<Produto> produtosDumb = new ArrayList<>();
-        produtosDumb.add(new Produto(null, "Livro", "Descrição do livro", 27.89, null, new HashSet<>()));
-        produtosDumb.add(new Produto(null, "The Lord of the Rings", "Lorem ipsum dolor sit amet, consectetur.", 90.5, null, new HashSet<>()));
-        produtosDumb.add(new Produto(null, "Smart TV", "Nulla eu imperdiet purus. Maecenas ante.", 2190.0, null, new HashSet<>()));
-        produtosDumb.add(new Produto(null, "Macbook Pro", "Nam eleifend maximus tortor, at mollis.", 1250.0, null, new HashSet<>()));
-        produtosDumb.add(new Produto(null, "PC Gamer", "Donec aliquet odio ac rhoncus cursus.", 1200.0, null, new HashSet<>()));
-        produtosDumb.add(new Produto(null, "Rails for Dummies", "Cras fringilla convallis sem vel faucibus.", 100.99, null, new HashSet<>()));
+        produtosDumb.add(new Produto(null, "Livro", "Descrição do livro", 27.89, null));
+        produtosDumb.add(new Produto(null, "The Lord of the Rings", "Lorem ipsum dolor sit amet, consectetur.", 90.5, null));
+        produtosDumb.add(new Produto(null, "Smart TV", "Nulla eu imperdiet purus. Maecenas ante.", 2190.0, null));
+        produtosDumb.add(new Produto(null, "Macbook Pro", "Nam eleifend maximus tortor, at mollis.", 1250.0, null));
+        produtosDumb.add(new Produto(null, "PC Gamer", "Donec aliquet odio ac rhoncus cursus.", 1200.0, null));
+        produtosDumb.add(new Produto(null, "Rails for Dummies", "Cras fringilla convallis sem vel faucibus.", 100.99, null));
         this.produtoRepository.saveAll(produtosDumb);
-
+        
+        produtosDumb.get(0).getCategorias().add(categoriasDumb.get(1));
+        produtosDumb.get(1).getCategorias().add(categoriasDumb.get(1));
+        produtosDumb.get(2).getCategorias().add(categoriasDumb.get(0));
+        produtosDumb.get(3).getCategorias().add(categoriasDumb.get(0));
+        produtosDumb.get(3).getCategorias().add(categoriasDumb.get(2));
+        produtosDumb.get(4).getCategorias().add(categoriasDumb.get(0));
+        produtosDumb.get(4).getCategorias().add(categoriasDumb.get(2));
+        produtosDumb.get(5).getCategorias().add(categoriasDumb.get(1));
+        this.produtoRepository.saveAll(produtosDumb);
+        
         List<Usuario> usuariosDumb = new ArrayList<>();
         usuariosDumb.add(new Usuario(null, "Maria Brown", "maria@gmail.com", "988888888", "123456", null));
         usuariosDumb.add(new Usuario(null, "Alex Green", "alex@gmail.com", "977777777", "123457", null));
