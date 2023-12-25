@@ -11,11 +11,13 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 import br.com.ferdbgg.springteste.entities.Categoria;
+import br.com.ferdbgg.springteste.entities.ItemPedido;
 import br.com.ferdbgg.springteste.entities.Pedido;
 import br.com.ferdbgg.springteste.entities.Produto;
 import br.com.ferdbgg.springteste.entities.Usuario;
 import br.com.ferdbgg.springteste.entities.enums.StatusPedido;
 import br.com.ferdbgg.springteste.repositories.CategoriaRepository;
+import br.com.ferdbgg.springteste.repositories.ItemPedidoRepository;
 import br.com.ferdbgg.springteste.repositories.PedidoRepository;
 import br.com.ferdbgg.springteste.repositories.ProdutoRepository;
 import br.com.ferdbgg.springteste.repositories.UsuarioRepository;
@@ -26,6 +28,8 @@ public class ConfiguracoesDeTestes implements CommandLineRunner{
 
     @Autowired
     private CategoriaRepository categoriaRepository;
+    @Autowired
+    private ItemPedidoRepository itemPedidoRepository;
     @Autowired
     private PedidoRepository pedidoRepository;
     @Autowired
@@ -72,6 +76,13 @@ public class ConfiguracoesDeTestes implements CommandLineRunner{
         pedidosDumb.add(new Pedido(null, Instant.parse("2019-07-21T03:42:10Z"), usuariosDumb.get(1), StatusPedido.CANCELADO.getCodigo()));
         pedidosDumb.add(new Pedido(null, Instant.parse("2019-07-22T15:21:22Z"), usuariosDumb.get(0), StatusPedido.ENTREGUE.getCodigo()));
         this.pedidoRepository.saveAll(pedidosDumb);
+
+        List<ItemPedido> itensPedidoDumb = new ArrayList<>();
+        itensPedidoDumb.add(new ItemPedido(pedidosDumb.get(0), produtosDumb.get(1), 2, produtosDumb.get(1).getPreco()));
+        itensPedidoDumb.add(new ItemPedido(pedidosDumb.get(0), produtosDumb.get(3), 1, produtosDumb.get(3).getPreco()));
+        itensPedidoDumb.add(new ItemPedido(pedidosDumb.get(1), produtosDumb.get(3), 2, produtosDumb.get(3).getPreco()));
+        itensPedidoDumb.add(new ItemPedido(pedidosDumb.get(2), produtosDumb.get(5), 3, produtosDumb.get(5).getPreco()));
+        this.itemPedidoRepository.saveAll(itensPedidoDumb);
 
     }
     
