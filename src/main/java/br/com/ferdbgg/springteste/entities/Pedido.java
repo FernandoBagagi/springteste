@@ -2,6 +2,8 @@ package br.com.ferdbgg.springteste.entities;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -12,6 +14,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -41,6 +44,16 @@ public class Pedido implements Serializable {
     private Usuario cliente;
 
     private Integer status;
+
+    @OneToMany(mappedBy = "id.pedido")
+    private Set<ItemPedido> itens = new HashSet<>();
+
+    public Pedido(Integer id, Instant instante, Usuario cliente, Integer status) {
+        this.id = id;
+        this.instante = instante;
+        this.cliente = cliente;
+        this.status = status;
+    }
 
     public StatusPedido getStatus() {
         return StatusPedido.valueOf(status);
