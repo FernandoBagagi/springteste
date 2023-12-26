@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Profile;
 
 import br.com.ferdbgg.springteste.entities.Categoria;
 import br.com.ferdbgg.springteste.entities.ItemPedido;
+import br.com.ferdbgg.springteste.entities.Pagamento;
 import br.com.ferdbgg.springteste.entities.Pedido;
 import br.com.ferdbgg.springteste.entities.Produto;
 import br.com.ferdbgg.springteste.entities.Usuario;
@@ -84,6 +85,10 @@ public class ConfiguracoesDeTestes implements CommandLineRunner{
         itensPedidoDumb.add(new ItemPedido(pedidosDumb.get(2), produtosDumb.get(5), 3, produtosDumb.get(5).getPreco()));
         this.itemPedidoRepository.saveAll(itensPedidoDumb);
 
+        List<Pagamento> pagamentosDumb = new ArrayList<>();
+        pagamentosDumb.add(new Pagamento(null, Instant.parse("2019-06-20T21:53:07Z"), pedidosDumb.get(0)));
+        pedidosDumb.get(0).setPagamento(pagamentosDumb.get(0));
+        this.pedidoRepository.save(pedidosDumb.get(0));
     }
     
 }
