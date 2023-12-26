@@ -3,6 +3,7 @@ package br.com.ferdbgg.springteste.entities;
 import java.io.Serializable;
 import java.time.Instant;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -36,6 +37,7 @@ public class Pagamento implements Serializable {
 
     @OneToOne
     @MapsId
+    @JsonIgnore
     private Pedido pedido;
 
 }
