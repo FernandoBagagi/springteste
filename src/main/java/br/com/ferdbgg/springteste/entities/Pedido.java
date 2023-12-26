@@ -24,15 +24,15 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name="pedidos")
+@Table(name = "pedidos")
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @NoArgsConstructor
 @AllArgsConstructor
 public class Pedido implements Serializable {
-    
+
     private static final long serialVersionUID = 1L;
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
@@ -40,7 +40,7 @@ public class Pedido implements Serializable {
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
     private Instant instante;
-    
+
     @ManyToOne
     @JoinColumn(name = "id_cliente")
     private Usuario cliente;
@@ -68,4 +68,9 @@ public class Pedido implements Serializable {
         this.status = status.getCodigo();
     }
 
+    public Double getTotal() {
+        return this.itens.stream().map(ItemPedido::getSubTotal).reduce(0.0,
+                (acumulador, subTotal) -> acumulador + subTotal);
+    }
+    
 }
