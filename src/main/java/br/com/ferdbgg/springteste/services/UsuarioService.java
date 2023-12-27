@@ -32,4 +32,16 @@ public class UsuarioService {
         this.usuarioRepository.deleteById(id);
     }
 
+    public Usuario update(Integer id, Usuario usuarioNovosDados) {
+        Usuario usuarioMonitoradoJPA = this.usuarioRepository.getReferenceById(id);
+        this.atualizarDados(usuarioMonitoradoJPA, usuarioNovosDados);
+        return this.usuarioRepository.save(usuarioMonitoradoJPA);
+    }
+
+    private void atualizarDados(Usuario usuarioMonitoradoJPA, Usuario usuarioNovosDados) {
+       usuarioMonitoradoJPA.setNome(usuarioNovosDados.getNome()); 
+       usuarioMonitoradoJPA.setEmail(usuarioNovosDados.getEmail());
+       usuarioMonitoradoJPA.setTelefone(usuarioNovosDados.getTelefone());
+    }
+
 }
