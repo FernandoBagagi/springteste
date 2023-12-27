@@ -39,9 +39,16 @@ public class UsuarioService {
     }
 
     private void atualizarDados(Usuario usuarioMonitoradoJPA, Usuario usuarioNovosDados) {
-       usuarioMonitoradoJPA.setNome(usuarioNovosDados.getNome()); 
-       usuarioMonitoradoJPA.setEmail(usuarioNovosDados.getEmail());
-       usuarioMonitoradoJPA.setTelefone(usuarioNovosDados.getTelefone());
+        //TODO: Verificar se a regra de negócio permite colocar null ou não
+        if(usuarioNovosDados.getNome() != null) {
+            usuarioMonitoradoJPA.setNome(usuarioNovosDados.getNome()); 
+        }
+        if(usuarioNovosDados.getEmail() != null) {
+            usuarioMonitoradoJPA.setEmail(usuarioNovosDados.getEmail());
+        }
+        if(usuarioNovosDados.getTelefone() != null) {
+            usuarioMonitoradoJPA.setTelefone(usuarioNovosDados.getTelefone());
+        }
     }
 
 }
