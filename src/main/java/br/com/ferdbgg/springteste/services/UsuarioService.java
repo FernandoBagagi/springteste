@@ -28,4 +28,8 @@ public class UsuarioService {
         return this.usuarioRepository.save(novoUsuario);
     }
 
+    public void deleteById(Integer id) {
+        this.usuarioRepository.deleteById(id);
+    }
+
 }
