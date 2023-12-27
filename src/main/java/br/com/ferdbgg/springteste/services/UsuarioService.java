@@ -24,4 +24,8 @@ public class UsuarioService {
         return usuario.isPresent() ? usuario.get() : new Usuario();
     }
 
+    public Usuario insert(Usuario novoUsuario) {
+        return this.usuarioRepository.save(novoUsuario);
+    }
+
 }
